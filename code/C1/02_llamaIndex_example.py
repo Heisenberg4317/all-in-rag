@@ -10,7 +10,7 @@ load_dotenv()
 # 使用 AIHubmix
 Settings.llm = OpenAILike(
     model="glm-4.7-flash-free",
-    api_key=AIHUBMIX_API_KEY,
+    api_key=AIHUBMIX_API_KEY, #替换成自己的API KEY
     api_base="https://aihubmix.com/v1",
     is_chat_model=True
 )

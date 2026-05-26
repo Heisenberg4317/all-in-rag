@@ -11,7 +11,7 @@ from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
-aihubmix_api_key = AIHUBMIX_API_KEY
+aihubmix_api_key = AIHUBMIX_API_KEY #替换成自己的API KEY
 if not aihubmix_api_key:
     raise ValueError("请设置 AIHUBMIX_API_KEY；AIHubMix 接口需要使用该平台生成的 API Key。")
 
