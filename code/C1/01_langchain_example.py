@@ -11,6 +11,10 @@ from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
+aihubmix_api_key = AIHUBMIX_API_KEY
+if not aihubmix_api_key:
+    raise ValueError("请设置 AIHUBMIX_API_KEY；AIHubMix 接口需要使用该平台生成的 API Key。")
+
 markdown_path = "../../data/C1/markdown/easy-rl-chapter1.md"
 
 # 加载本地markdown文件
@@ -52,7 +56,7 @@ llm = ChatOpenAI(
     model="glm-4.7-flash-free",
     temperature=0.7,
     max_tokens=4096,
-    api_key=os.getenv("DEEPSEEK_API_KEY"),
+    api_key=aihubmix_api_key,
     base_url="https://aihubmix.com/v1"
 )
 
@@ -72,4 +76,4 @@ retrieved_docs = vectorstore.similarity_search(question, k=3)
 docs_content = "\n\n".join(doc.page_content for doc in retrieved_docs)
 
 answer = llm.invoke(prompt.format(question=question, context=docs_content))
-print(answer)
+print(answer.content)
